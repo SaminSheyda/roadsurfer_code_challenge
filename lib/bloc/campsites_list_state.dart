@@ -19,7 +19,7 @@ class  CampsitesListLoadingState extends CampsitesListState {
   const CampsitesListLoadingState();
 }
 
-/// Browse Projects Loaded state.
+///  Loaded state.
 class  CampsitesListLoadedState extends CampsitesListState {
   /// Initialises loaded state.
   CampsitesListLoadedState(this.campsites);
@@ -28,7 +28,7 @@ class  CampsitesListLoadedState extends CampsitesListState {
   List<CampsiteModel> campsites;
 }
 
-/// Trading error state.
+///  error state.
 class  CampsitesListErrorState extends CampsitesListState {
   /// Initialises error state.
   const CampsitesListErrorState(this.errorMessage);

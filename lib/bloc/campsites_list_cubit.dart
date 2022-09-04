@@ -12,7 +12,7 @@ class CampsitesListCubit extends Cubit<CampsitesListState> {
 
   final CampsiteService campsiteService;
   /// fetch data from API
-  Future<void> fetchTasksList() async {
+  Future<void> fetchCampsitesList() async {
     emit(const CampsitesListLoadingState());
     List<CampsiteModel>? campsites = <CampsiteModel>[];
     try {
