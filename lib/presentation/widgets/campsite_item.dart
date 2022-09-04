@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:roadsurfer_code_challenge/data/models/campsite_model.dart';
 import 'package:roadsurfer_code_challenge/helpers/language_code_helper.dart';
+import 'package:roadsurfer_code_challenge/presentation/pages/campsite_details_page.dart';
 import 'package:roadsurfer_code_challenge/presentation/widgets/campsite_field.dart';
 
 class CampsiteItem extends StatelessWidget {
@@ -9,23 +10,31 @@ class CampsiteItem extends StatelessWidget {
   final CampsiteModel campsite;
 
   @override
-  Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Container(
-          height: MediaQuery.of(context).size.height * 0.28,
-          key: const Key('CampsiteItem'),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16),
-              color: Colors.greenAccent),
-          child: Column(
-            children: [
-              Expanded(
-                child: _buildPhoto(context),
-              ),
-              Expanded(
-                child: _buildDataFields(context),
-              ),
-            ],
+  Widget build(BuildContext context) => GestureDetector(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            height: MediaQuery.of(context).size.height * 0.28,
+            key: const Key('CampsiteItem'),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+                color: Colors.greenAccent),
+            child: Column(
+              children: [
+                Expanded(
+                  child: _buildPhoto(context),
+                ),
+                Expanded(
+                  child: _buildDataFields(context),
+                ),
+              ],
+            ),
+          ),
+        ),
+        onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute<Widget>(
+            builder: (BuildContext context) => CampsiteDetailsPage(campsite),
           ),
         ),
       );
@@ -66,7 +75,7 @@ class CampsiteItem extends StatelessWidget {
                       height: MediaQuery.of(context).size.height * 0.01,
                     ),
                     CampsiteField(Icons.language,
-                        _showListOfLanguages(campsite.hostLanguages)),
+                        showListOfLanguages(campsite.hostLanguages)),
                   ],
                 ),
                 const Spacer(),
@@ -90,18 +99,6 @@ class CampsiteItem extends StatelessWidget {
           ],
         ),
       );
-
-  String _showListOfLanguages(List<String>? codes) {
-    if (codes != null && codes.isNotEmpty) {
-      String language = getDisplayLanguage(codes.first);
-      for (int i = 1; i < codes.length; i++) {
-        language += ', ${getDisplayLanguage(codes[i])}';
-      }
-      return language;
-    } else {
-      return 'English';
-    }
-  }
 
   String getCountryFromGeoLocation(GeoLocation? location) {
     if (location == null || location.lat == null) {

@@ -2,13 +2,18 @@ import 'package:flutter/material.dart';
 
 class CampsiteField extends StatelessWidget {
   /// constructor
-  const CampsiteField(this.iconAsset, this.value,{Key? key}):super(key: key);
+  const CampsiteField(this.iconAsset, this.value,
+      {Key? key, this.textSize, this.iconSize})
+      : super(key: key);
 
   /// icon Asset Name
   final IconData iconAsset;
 
   /// value
   final String value;
+
+  final double? textSize;
+  final double? iconSize;
 
   @override
   Widget build(BuildContext context) => Flex(
@@ -17,14 +22,17 @@ class CampsiteField extends StatelessWidget {
         children: <Widget>[
           Icon(
             iconAsset,
-            size: 16,
+            size: iconSize ?? 16,
             color: Colors.white,
           ),
           const SizedBox(width: 8),
-          Text(
-            value,
-            maxLines: 5,
-            overflow: TextOverflow.ellipsis,
+          Flexible(
+            child: Text(
+              value,
+              maxLines: 5,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(fontSize: textSize, color: Colors.black54),
+            ),
           ),
         ],
       );

@@ -206,8 +206,20 @@ const isoLangs = {
 
 String getDisplayLanguage(key) {
   if (isoLangs.containsKey(key)) {
-    return isoLangs[key]?.values.first??'';
+    return isoLangs[key]?.values.first ?? '';
   } else {
     throw Exception("Language key incorrect");
+  }
+}
+
+String showListOfLanguages(List<String>? codes) {
+  if (codes != null && codes.isNotEmpty) {
+    String language = getDisplayLanguage(codes.first);
+    for (int i = 1; i < codes.length; i++) {
+      language += ', ${getDisplayLanguage(codes[i])}';
+    }
+    return language;
+  } else {
+    return 'English';
   }
 }
