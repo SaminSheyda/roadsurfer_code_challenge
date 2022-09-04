@@ -65,10 +65,8 @@ class CampsiteItem extends StatelessWidget {
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.01,
                     ),
-                    CampsiteField(
-                        Icons.language,
-                        campsite.hostLanguages?.first.toString() ??
-                            _showListOfLanguages(campsite.hostLanguages)),
+                    CampsiteField(Icons.language,
+                        _showListOfLanguages(campsite.hostLanguages)),
                   ],
                 ),
                 const Spacer(),
@@ -97,7 +95,7 @@ class CampsiteItem extends StatelessWidget {
     if (codes != null && codes.isNotEmpty) {
       String language = getDisplayLanguage(codes.first);
       for (int i = 1; i < codes.length; i++) {
-        language += '  ${getDisplayLanguage(codes[i])}';
+        language += ', ${getDisplayLanguage(codes[i])}';
       }
       return language;
     } else {
@@ -106,7 +104,7 @@ class CampsiteItem extends StatelessWidget {
   }
 
   String getCountryFromGeoLocation(GeoLocation? location) {
-    if (location == null) {
+    if (location == null || location.lat == null) {
       return 'Unknown';
     } else {
       /// because in all data models location is null, i will not implement this

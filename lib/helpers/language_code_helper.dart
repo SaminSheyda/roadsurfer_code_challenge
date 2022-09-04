@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 const isoLangs = {
   "ab": {"name": "Abkhaz", "nativeName": "аҧсуа"},
   "aa": {"name": "Afar", "nativeName": "Afaraf"},
@@ -202,9 +204,9 @@ const isoLangs = {
   "za": {"name": "Zhuang, Chuang", "nativeName": "Saɯ cueŋƅ, Saw cuengh"}
 };
 
-getDisplayLanguage(key) {
+String getDisplayLanguage(key) {
   if (isoLangs.containsKey(key)) {
-    return isoLangs[key];
+    return isoLangs[key]?.values.first??'';
   } else {
     throw Exception("Language key incorrect");
   }
