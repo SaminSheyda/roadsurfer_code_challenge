@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 const isoLangs = {
   "ab": {"name": "Abkhaz", "nativeName": "аҧсуа"},
   "aa": {"name": "Afar", "nativeName": "Afaraf"},

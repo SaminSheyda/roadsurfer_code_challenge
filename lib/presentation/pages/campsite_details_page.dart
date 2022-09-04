@@ -36,13 +36,13 @@ class CampsiteDetailsPage extends StatelessWidget {
 
   Widget _buildBackButton(BuildContext context) => GestureDetector(
         child: Padding(
-          padding: EdgeInsets.only(top: 38, left: 16),
+          padding: const EdgeInsets.only(top: 38, left: 16),
           child: Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Color(0xFFF0F5F5),
               shape: BoxShape.circle,
             ),
-            child: Icon(
+            child: const Icon(
               Icons.arrow_back,
               size: 30,
             ),
