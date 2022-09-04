@@ -5,6 +5,7 @@ import 'package:roadsurfer_code_challenge/bloc/campsites_list_cubit.dart';
 import 'package:roadsurfer_code_challenge/bloc/simple_bloc_observer.dart';
 import 'package:roadsurfer_code_challenge/data/service/campsites_service.dart';
 import 'package:roadsurfer_code_challenge/presentation/pages/home_page.dart';
+import 'package:roadsurfer_code_challenge/presentation/pages/splash_page.dart';
 
 void main() {
   // We can set a Bloc's observer to an instance of `SimpleBlocObserver`.
@@ -29,9 +30,10 @@ class CampsitesApp extends StatelessWidget {
       MaterialApp(
         title: "",
         debugShowCheckedModeBanner: false,
-        initialRoute: HomePage.routeName,
+        initialRoute: SplashPage.routeName,
         routes: <String, WidgetBuilder>{
           HomePage.routeName: (BuildContext context) => const HomePage(),
+          SplashPage.routeName: (BuildContext context) => const SplashPage(),
         },
     );
   }

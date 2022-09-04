@@ -38,7 +38,7 @@ class CampsiteItem extends StatelessWidget {
 
   Widget _buildDataFields(BuildContext context) => Padding(
         padding: EdgeInsets.symmetric(
-            horizontal: 32,
+            horizontal: 16,
             vertical: MediaQuery.of(context).size.height * 0.02),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
